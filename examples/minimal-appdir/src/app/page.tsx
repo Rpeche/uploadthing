@@ -2,7 +2,7 @@
 
 import { UploadButton } from "@uploadthing/react";
 import "@uploadthing/react/styles.css";
-import type { UploadRouter } from "./api/uploadthing/core";
+import type { UploadRouter } from "@/app/api/uploadthing/core";
 
 export default function Home() {
   return (
