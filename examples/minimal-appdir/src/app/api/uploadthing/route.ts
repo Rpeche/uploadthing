@@ -1,25 +1,7 @@
-import { createUploadthing, type FileRouter, createNextRouteHandler } from "uploadthing/next";
+// app/api/uploadthing/route.ts
+import { createRouteHandler } from "uploadthing/next";
+import { uploadRouter } from "./core";
 
-const f = createUploadthing();
-
-export const ourFileRouter = {
-  dnaUploader: f({
-    "text/plain": { maxFileSize: "32MB" },
-    "text/csv": { maxFileSize: "32MB" },
-  }).onUploadComplete(async ({ file }) => {
-    console.log("✅ DNA file uploaded:", file.url);
-
-    // Forward to Make.com if you want:
-    // await fetch("https://hook.eu1.make.com/YOUR_WEBHOOK_ID", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ fileUrl: file.url }),
-    // });
-  }),
-} satisfies FileRouter;
-
-export type OurFileRouter = typeof ourFileRouter;
-
-export const { GET, POST } = createNextRouteHandler({
-  router: ourFileRouter,
+export const { GET, POST } = createRouteHandler({
+  router: uploadRouter,
 });
