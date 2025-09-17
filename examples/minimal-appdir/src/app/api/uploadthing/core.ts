@@ -1,3 +1,4 @@
+// app/api/uploadthing/core.ts
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 
 const f = createUploadthing();
@@ -8,8 +9,6 @@ export const ourFileRouter = {
     "text/csv": { maxFileSize: "32MB" },
   }).onUploadComplete(async ({ file }) => {
     console.log("✅ DNA file uploaded:", file.url);
-
-    // OPTIONAL: forward to Make.com
   }),
 } satisfies FileRouter;
 
