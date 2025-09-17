@@ -1,7 +1,7 @@
 "use client";
 
 import { UploadButton } from "@uploadthing/react";
-import type { OurFileRouter } from "@/app/api/uploadthing/route";
+import type { OurFileRouter } from "./api/uploadthing/route";
 
 export default function Home() {
   return (
@@ -14,6 +14,7 @@ export default function Home() {
           alert("✅ DNA file uploaded successfully!");
         }}
         onUploadError={(error: Error) => {
+          console.error(error);
           alert(`❌ Upload failed: ${error.message}`);
         }}
       />
