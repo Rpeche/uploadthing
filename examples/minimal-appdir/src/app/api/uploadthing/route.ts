@@ -1,15 +1,15 @@
-import { createUploadthing, type FileRouter, createNextRouteHandler } from "uploadthing/next";
+import { createUploadthing, type FileRouter, createRouteHandler } from "uploadthing/next";
 
 const f = createUploadthing();
 
 export const ourFileRouter = {
   dnaUploader: f({
-    "text/plain": { maxFileSize: "32MB" },
-    "text/csv": { maxFileSize: "32MB" },
+    "text/plain": { maxFileSize: "32MB" }, // raw DNA txt files
+    "text/csv": { maxFileSize: "32MB" },   // some services export CSV
   }).onUploadComplete(async ({ file }) => {
     console.log("✅ DNA file uploaded:", file.url);
 
-    // OPTIONAL: forward to Make.com
+    // OPTIONAL: Forward to Make.com webhook
     // await fetch("https://hook.eu1.make.com/YOUR_WEBHOOK_ID", {
     //   method: "POST",
     //   headers: { "Content-Type": "application/json" },
@@ -20,7 +20,7 @@ export const ourFileRouter = {
 
 export type OurFileRouter = typeof ourFileRouter;
 
-// 👇 THIS is the important fix
-export const { GET, POST } = createNextRouteHandler({
+// 👇 Correct helper for v7+
+export const { GET, POST } = createRouteHandler({
   router: ourFileRouter,
 });
