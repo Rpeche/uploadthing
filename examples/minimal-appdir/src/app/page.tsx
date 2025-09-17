@@ -17,12 +17,16 @@ export default function Home() {
       <h1>Upload Your DNA File</h1>
       <UploadButton<UploadRouter>
         endpoint="dnaUploader"
+        appearance={{
+          button: { background: "#000", color: "#fff", padding: "10px 20px" },
+          container: { display: "flex", flexDirection: "column", gap: "12px" },
+        }}
         onClientUploadComplete={(res) => {
           console.log("✅ Upload complete:", res);
           alert("✅ DNA file uploaded successfully!");
         }}
         onUploadError={(error: Error) => {
-          console.error(error);
+          console.error("❌ Upload failed:", error);
           alert(`❌ Upload failed: ${error.message}`);
         }}
       />
