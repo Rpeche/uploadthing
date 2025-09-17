@@ -1,20 +1,19 @@
 "use client";
 
 import { UploadButton } from "@uploadthing/react";
-import type { OurFileRouter } from "./api/uploadthing/route";
+import "@uploadthing/react/styles.css";
 
 export default function Home() {
   return (
-    <main style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "50px" }}>
-      <h1>Upload Your DNA File</h1>
-      <UploadButton<OurFileRouter>
-        endpoint="dnaUploader"
+    <main className="flex min-h-screen flex-col items-center justify-center">
+      <UploadButton
+        endpoint="imageUploader"
         onClientUploadComplete={(res) => {
-          console.log("Upload complete:", res);
-          alert("✅ DNA file uploaded successfully!");
+          console.log("Files: ", res);
+          alert("Upload Completed");
         }}
-        onUploadError={(error: Error) => {
-          alert(`❌ Upload failed: ${error.message}`);
+        onUploadError={(error) => {
+          alert(`ERROR! ${error.message}`);
         }}
       />
     </main>
