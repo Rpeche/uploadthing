@@ -1,9 +1,9 @@
-// app/api/uploadthing/core.ts
+// src/app/api/uploadthing/core.ts
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 
 const f = createUploadthing();
 
-export const ourFileRouter = {
+export const uploadRouter = {
   dnaUploader: f({
     "text/plain": { maxFileSize: "32MB" },
     "text/csv": { maxFileSize: "32MB" },
@@ -12,4 +12,4 @@ export const ourFileRouter = {
   }),
 } satisfies FileRouter;
 
-export type OurFileRouter = typeof ourFileRouter;
+export type UploadRouter = typeof uploadRouter;
