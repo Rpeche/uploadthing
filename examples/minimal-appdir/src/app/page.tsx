@@ -14,7 +14,6 @@ export default function Home() {
           alert("✅ DNA file uploaded successfully!");
         }}
         onUploadError={(error: Error) => {
-          console.error(error);
           alert(`❌ Upload failed: ${error.message}`);
         }}
       />
