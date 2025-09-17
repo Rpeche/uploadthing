@@ -1,4 +1,4 @@
-import { createUploadthing, type FileRouter, createRouteHandler } from "uploadthing/next";
+import { createUploadthing, type FileRouter, createNextRouteHandler } from "uploadthing/next";
 
 const f = createUploadthing();
 
