@@ -17,6 +17,7 @@ export default function Home() {
       }}
     >
       <h1>Upload Your DNA File</h1>
+      <p>API URL Check: {process.env.NEXT_PUBLIC_UPLOADTHING_URL || "default"}</p>
       <UploadButton<UploadRouter>
         endpoint="dnaUploader"
         onClientUploadComplete={(res) => {
