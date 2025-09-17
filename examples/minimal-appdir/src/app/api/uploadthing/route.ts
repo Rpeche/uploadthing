@@ -20,6 +20,6 @@ export const ourFileRouter = {
 
 export type OurFileRouter = typeof ourFileRouter;
 
-export const { GET, POST } = createNextRouteHandler({
+export const { GET, POST } = createRouteHandler({
   router: ourFileRouter,
 });
