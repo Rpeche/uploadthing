@@ -1,7 +1,7 @@
 "use client";
 
 import { UploadButton } from "@uploadthing/react";
-import type { OurFileRouter } from "./api/uploadthing/route";
+import type { OurFileRouter } from "~/api/uploadthing/route";
 
 export default function Home() {
   return (
