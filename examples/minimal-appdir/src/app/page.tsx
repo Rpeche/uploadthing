@@ -12,11 +12,23 @@ export default function Home() {
         flexDirection: "column",
         alignItems: "center",
         marginTop: "50px",
+        gap: "16px",
       }}
     >
       <h1>Upload Your DNA File</h1>
+
       <UploadButton<UploadRouter>
         endpoint="dnaUploader"
+        appearance={{
+          button: { background: "#000", color: "#fff", padding: "10px 20px" },
+          container: { display: "flex", flexDirection: "column", gap: "12px" },
+          label: { display: "none" }, // hide default "Loading..." label
+        }}
+        content={{
+          button({ ready }) {
+            return ready ? "Upload DNA File" : "Initializing…";
+          },
+        }}
         onClientUploadComplete={(res) => {
           console.log("✅ Upload complete:", res);
           alert("✅ DNA file uploaded successfully!");
