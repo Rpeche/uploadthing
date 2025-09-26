@@ -26,7 +26,7 @@ export default function Home() {
         }}
         content={{
           button({ ready }) {
-            return ready ? "Upload DNA File" : "Initializing…";
+            return ready ? "Upload DNA File" : "Upload DNA File";
           },
         }}
         onClientUploadComplete={(res) => {
